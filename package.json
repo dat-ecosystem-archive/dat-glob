@@ -1,0 +1,44 @@
+{
+  "name": "dat-glob",
+  "version": "1.0.0",
+  "description": "Glob file matcher for dat archives",
+  "main": "index.js",
+  "dependencies": {
+    "call-me-maybe": "^1.0.1",
+    "callbox": "^1.0.0",
+    "dat-walk": "^1.0.0",
+    "glob-parent": "^3.1.0",
+    "micromatch": "^3.1.10",
+    "pumpify": "^1.5.1",
+    "through2": "^3.0.0"
+  },
+  "devDependencies": {
+    "@rangermauve/webrun": "^3.0.2",
+    "scoped-fs": "^1.2.0",
+    "standard": "^12.0.1",
+    "tape": "^4.9.1"
+  },
+  "scripts": {
+    "test": "standard && webrun --allow-require test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brechtcs/dat-glob.git"
+  },
+  "keywords": [
+    "glob",
+    "pattern",
+    "file",
+    "matcher",
+    "match",
+    "dat",
+    "hyperdrive",
+    "scoped-fs"
+  ],
+  "bugs": {
+    "url": "https://github.com/brechtcs/dat-glob/issues"
+  },
+  "homepage": "https://github.com/brechtcs/dat-glob#readme",
+  "author": "Brecht Savelkoul <brecht.savelkoul@gmail.com>",
+  "license": "Apache-2.0"
+}
