@@ -13,7 +13,7 @@ module.exports = function (dat, pattern) {
 }
 
 function match (dat, pattern) {
-  var base = parent(pattern).replace(/^\./, '')
+  var base = parent(pattern)
   var walker = walk(dat, base).stream()
   var matcher = through.obj(function (chunk, enc, cb) {
     var file = chunk.toString(enc)

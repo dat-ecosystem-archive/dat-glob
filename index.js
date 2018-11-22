@@ -9,7 +9,7 @@ module.exports = function (dat, pattern) {
 }
 
 async function * match (dat, pattern) {
-  var base = parent(pattern).replace(/^\./, '')
+  var base = parent(pattern)
   var file
 
   for await (file of walk(dat, base)) {
