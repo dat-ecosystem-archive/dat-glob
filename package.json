@@ -1,7 +1,7 @@
 {
   "name": "dat-glob",
-  "version": "1.0.1",
-  "description": "Glob file matcher for dat archives",
+  "version": "1.0.2",
+  "description": "Glob implementation for dat archives",
   "main": "index.js",
   "dependencies": {
     "call-me-maybe": "^1.0.1",
