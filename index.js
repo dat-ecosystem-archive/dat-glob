@@ -2,18 +2,18 @@ var mm = require('micromatch')
 var parent = require('glob-parent')
 var walk = require('dat-walk')
 
-module.exports = function (dat, pattern) {
-  var it = match(dat, pattern)
+module.exports = function (dat, glob) {
+  var it = match(dat, glob)
   it.collect = () => collect(it)
   return it
 }
 
-async function * match (dat, pattern) {
-  var base = parent(pattern)
+async function * match (dat, glob) {
+  var base = Array.isArray(glob) ? '' : parent(glob)
   var file
 
   for await (file of walk(dat, base)) {
-    if (mm.isMatch(file, pattern)) yield file
+    if (mm.some(file, glob)) yield file
   }
 }
 

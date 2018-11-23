@@ -21,10 +21,9 @@ test('stream: collect', async t => {
   var glob = require('./stream')
   var dat = await mock()
 
-  var list = await glob(dat, '**/*.json').collect()
+  var list = await glob(dat, ['*.json', '**/*.md']).collect()
   t.ok(list.includes('dat.json'))
-  t.ok(list.includes('subdir/one.json'))
-  t.ok(list.includes('subdir/two.json'))
+  t.ok(list.includes('subdir/ping.md'))
   t.end()
 })
 
@@ -36,9 +35,9 @@ test('iterator', async t => {
     t.ok(match !== 'subdir/ping.md' && /\.json$/.test(match), match)
   }
 
-  var list = await glob(dat, 'subdir/*.json').collect()
-  t.ok(list.includes('subdir/one.json'))
-  t.ok(list.includes('subdir/two.json'))
+  var list = await glob(dat, ['*.json', '**/*.md']).collect()
+  t.ok(list.includes('dat.json'))
+  t.ok(list.includes('subdir/ping.md'))
   t.end()
 
   window.close()

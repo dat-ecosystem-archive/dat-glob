@@ -13,7 +13,7 @@ This package exports two modules. The default `require('dat-glob')` works with a
 var glob = require('dat-glob')
 
 async function main () {
-  var dat = DatArchive.create()
+  var dat = await DatArchive.create()
 
   for await (var file of glob(dat, '**/*.json')) {
     console.log(file) // 'dat.json'
@@ -30,7 +30,7 @@ var hyperdrive = require('hyperdrive')
 var glob = require('dat-glob/stream')
 
 var dat = hyperdrive(key)
-var stream = glob(dat, 'subdir')
+var stream = glob(dat, ['*.json', 'subdir/*.json'])
 
 stream.pipe(process.stdout)
 
