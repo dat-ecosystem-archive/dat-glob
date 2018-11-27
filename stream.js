@@ -6,15 +6,18 @@ var pumpify = require('pumpify')
 var through = require('through2')
 var walk = require('dat-walk')
 
-module.exports = function (dat, glob) {
-  var stream = match(dat, glob)
+module.exports = function (dat, opts) {
+  opts = opts || {}
+  var glob = typeof opts === 'string' || Array.isArray(opts) ? opts : opts.pattern
+  var stream = match(dat, glob, opts)
   stream.collect = cb => collect(stream, cb)
   return stream
 }
 
-function match (dat, glob) {
+function match (dat, glob, opts) {
   var base = Array.isArray(glob) ? '' : parent(glob)
-  var walker = walk(dat, base).stream()
+  var follow = opts.follow
+  var walker = walk(dat, { base, follow }).stream()
   var matcher = through.obj(function (chunk, enc, cb) {
     var file = chunk.toString(enc)
     if (mm.some(file, glob)) {
