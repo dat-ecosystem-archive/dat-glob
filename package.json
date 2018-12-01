@@ -1,12 +1,12 @@
 {
   "name": "dat-glob",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Glob implementation for dat archives",
   "main": "index.js",
   "dependencies": {
     "call-me-maybe": "^1.0.1",
     "callbox": "^1.0.0",
-    "dat-walk": "^1.1.0",
+    "dat-walk": "^2.0.0",
     "glob-parent": "^3.1.0",
     "micromatch": "^3.1.10",
     "pumpify": "^1.5.1",

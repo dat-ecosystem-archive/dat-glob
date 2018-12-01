@@ -4,7 +4,7 @@ var mm = require('micromatch')
 var parent = require('glob-parent')
 var pumpify = require('pumpify')
 var through = require('through2')
-var walk = require('dat-walk')
+var walk = require('dat-walk/stream')
 
 module.exports = function (dat, opts) {
   opts = opts || {}
@@ -17,7 +17,7 @@ module.exports = function (dat, opts) {
 function match (dat, glob, opts) {
   var base = Array.isArray(glob) ? '' : parent(glob)
   var follow = opts.follow
-  var walker = walk(dat, { base, follow }).stream()
+  var walker = walk(dat, { base, follow })
   var matcher = through.obj(function (chunk, enc, cb) {
     var file = chunk.toString(enc)
     if (mm.some(file, glob)) {
