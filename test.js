@@ -39,6 +39,24 @@ test('iterator', async t => {
   t.ok(list.includes('dat.json'))
   t.ok(list.includes('subdir/ping.md'))
   t.end()
+})
+
+test('opt: dirs', async t => {
+  var glob = require('./')
+  var dat = await DatArchive.create()
+  var dirs = ['one', 'two', 'three']
+
+  for await (var dir of dirs) {
+    await dat.mkdir(dir)
+  }
+
+  var list = await glob(dat, {
+    pattern: '*',
+    dirs: true
+  }).collect()
+
+  dirs.forEach(dir => t.ok(list.includes(dir)))
+  t.end()
 
   window.close()
 })

@@ -13,11 +13,12 @@ module.exports = function (dat, opts) {
 
 async function * match (dat, glob, opts) {
   assert(typeof glob === 'string' || Array.isArray(glob), 'Invalid glob pattern')
+
   var base = Array.isArray(glob) ? '' : parent(glob)
-  var follow = opts.follow
+  var walkOpts = Object.assign({ base }, opts)
   var file
 
-  for await (file of walk(dat, { base, follow })) {
+  for await (file of walk(dat, walkOpts)) {
     if (mm.some(file, glob)) yield file
   }
 }
