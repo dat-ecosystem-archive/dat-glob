@@ -2,7 +2,7 @@
 
 Glob implementation for `dat` archives.
 
-Supports both raw `hyperdrive` instances and Beaker Browser's `DatArchive` API.
+Supports both raw `hyperdrive` instances and Beaker Browser's `DatArchive` API. With [`scoped-fs`](https://github.com/pfrazee/scoped-fs) you can use it on your local file system as well.
 
 ## Usage
 
